@@ -12,11 +12,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
- 
- 
- 
- */
+
+
+
+
+ FN Swap Version*/
 
 #include QMK_KEYBOARD_H
 #include "keymap_user.h"
@@ -89,9 +89,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [WIN_FN] = LAYOUT_ansi_82(
      TO(WIN_BASE),            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_TRNS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            RGB_TOG,
-     KC_TRNS,  RGB_TOG,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,  KC_TRNS,  KC_TRNS,  KC_UP,  KC_EQL,  KC_PLUS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
-     KC_TRNS,  RGB_MOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  KC_TRNS,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_UNDS,  KC_MINS,            KC_TRNS,            KC_TRNS,
-     KC_TRNS,            KC_LTTOG, KC_LATOG, KC_TKTOG, KC_FCTOG, KC_TRNS,  KC_TRNS,  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_CAPS,  KC_TRNS,
+     KC_TRNS,  LCTL(KC_Q),  LCTL(KC_W),  LCTL(KC_E),  LCTL(KC_R),  LCTL(KC_Z),  LCTL(KC_Z),  KC_EQL,  KC_UP,  KC_PLUS,  KC_MINS,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_TRNS,
+     KC_TRNS,  LCTL(KC_A), LCTL(KC_S),  LCTL(KC_D),  LCTL(KC_F),  LCTL(KC_G),  LCTL(KC_H),  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_UNDS,  KC_TRNS,            KC_TRNS,            KC_TRNS,
+     KC_TRNS,            LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_B),  LCTL(KC_N),  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_TRNS,            KC_CAPS,  KC_TRNS,
      KC_TRNS,  KC_TRNS,  KC_TRNS,                                KC_TRNS,                                KC_TRNS,  KC_RGUI,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS)
 
 };
@@ -157,36 +157,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 eeconfig_update_user(user_config.raw);
             }
             return false;  // Skip all further processing of this key
-        case LSFT_T(KC_LPRN):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LPRN); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
-        case RSFT_T(KC_RPRN):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RPRN); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
-        case LGUI_T(KC_LBRC):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LBRC); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
-        case LALT_T(KC_LCBR):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_LCBR); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
-        case RALT_T(KC_RCBR):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RCBR); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
-        case RCTL_T(KC_RBRC):
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(KC_RBRC); // Send KC_xxxx on tap
-                return false;        // Return false to ignore further processing of key
-            }
         default:
             return true;  // Process all other keycodes normally
     }

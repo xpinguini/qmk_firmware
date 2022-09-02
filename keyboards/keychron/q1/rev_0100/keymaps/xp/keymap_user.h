@@ -16,12 +16,18 @@
 
 #pragma once
 
-#ifdef RGB_MATRIX_ENABLE
-#    define RGB_DISABLE_WHEN_USB_SUSPENDED
-#    define CAPS_LOCK_INDICATOR_COLOR RGB_RED
-#    define FN_LAYER_COLOR RGB_ORANGE
+// clang-format off
 
-#endif
+enum layers {
+    MAC_BASE,
+    MAC_FN,
+    WIN_BASE,
+    WIN_FN
+};
 
-#define HOLD_ON_OTHER_KEY_PRESS
-#define
+// clang-format on
+
+bool get_caps_lock_light_tab(void);
+bool get_caps_lock_light_alphas(void);
+bool get_fn_layer_transparent_keys_off(void);
+bool get_fn_layer_color_enable(void);
